@@ -1,0 +1,13 @@
+version: 2
+
+exposures:
+  - name: tableau_calendar_dashboard
+    type: dashboard
+    maturity: high
+    description: "Tableau dashboards that rely on GOLD.DATE_TABLE for business day logic."
+    depends_on: 
+      - ref('date_table')
+    owner:
+      name: Analytics Team
+      email: tbd@genesysworks.org
+      
