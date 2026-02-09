@@ -36,4 +36,3 @@ models:
       - name: IS_INTERNSHIP_MONTH
         description: "True only when IS_WORKDAY is true and month is not JULY/August"
 
-description: "{{ doc('date_table_definition') }}"
