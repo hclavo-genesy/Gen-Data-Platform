@@ -1,0 +1,29 @@
+version: 2
+
+sources:
+  - name: silver
+    database: ANALYTICS_DEV
+    schema: SILVER
+    description: "Silver reference tables. DIM_HOLIDAY is populated by Snowflake SP: GW_HOLIDAY_POLICY is curated policy."
+    tables:
+      - name: DIM_HOLIDAY
+        description: "Publci holidays ingested from Nager.Date via Snowflake stored procedure."
+        columns:
+          - name: COUNTRY_CODE
+            description: "ISO country code (e.g., us)."
+          - name: DATE
+            description: "Observed holiday date."
+          - name: HOLIDAY_NAME
+            description: "Holiday name as provided by the API."
+          - name: LOADED_AT
+            description: "Timestamp when ingested/updated"
+
+      - name: GW_HOLIDAY_POLICY
+        description: "Authoritative list of GW-recognized holidays by name"
+        columns:
+          - name: COUNTRY_CODE
+            description: "Country code scope for policy"
+          - name: HOLIDAY_NAME
+            description: "Holiday name key used to match against DIM_HOLIDAY"
+          - name: IS_GW_HOLIDAY
+            description: "TRUE if holiday is treated as GW holiday"

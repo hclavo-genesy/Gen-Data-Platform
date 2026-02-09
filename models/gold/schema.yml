@@ -1,0 +1,38 @@
+version: 2
+
+
+
+models:
+  - name: date_table
+    description: "{{ doc('date_table_definition') }}"
+    columns:
+      - name: DATE
+        description: "Calendar_date."
+        tests:
+          - not_null
+          - unique
+      
+      - name: YEAR
+        description: "Calendar year as VARCHAR"
+
+      - name: WEEK_OF_YEAR
+        description: "ISO-ish week of year as varchar"
+
+      - name: MONTH_NUMBER
+        description: "Month number (1-12) as varchar"
+
+      - name: MONTH_YEAR
+        description: "Month label formatted as 'January-YYYY'."
+      
+      - name: IS_HOLIDAY
+        description: "TRUE if date matches a GW holiday (based on policy and observed holiday dates)."
+      
+      - name: gw_holidays.name
+        description: "GW Holiday name for the date (NULL if not a GW holiday)."
+
+      - name: IS_WORKDAY
+        description: "True if weekday and not a GW holiday."
+      
+      - name: IS_INTERNSHIP_MONTH
+        description: "True only when IS_WORKDAY is true and month is not JULY/August"
+
