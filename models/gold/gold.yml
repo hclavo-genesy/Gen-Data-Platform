@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: date_table
+    description: Calendar date dimension for analytics and business day logic.
+    columns:
+      - name: date
+        description: Calendar date.
+        tests:
+          - not_null
+          - unique
+      - name: is_workday
+        description: True when the date is a weekday and not a GW holiday.
+      - name: is_internship_month
+        description: False for July and August; otherwise follows workday logic.
