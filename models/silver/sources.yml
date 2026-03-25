@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: analytics_dev_silver
+    database: ANALYTICS_DEV
+    schema: SILVER
+    tables:
+      - name: dim_holiday
+        description: Holiday dimension table populated from the external Nager API via Snowflake stored procedure.
+      - name: gw_holiday_policy
+        description: Holiday policy table used to determine approved business holidays.

@@ -1,0 +1,81 @@
+version: 2
+
+models:
+  - name: date_table
+    description: "{{ doc('date_table_overview') }}"
+    columns:
+      - name: date
+        description: Calendar date at daily grain.
+        tests:
+          - not_null
+          - unique
+
+      - name: year
+        description: Calendar year derived from the date.
+
+      - name: week_of_year
+        description: ISO week number of the year.
+
+      - name: month_number
+        description: Numeric month value from 1 to 12.
+
+      - name: month_of_year
+        description: Numeric month value from 1 to 12, used for reporting compatibility.
+
+      - name: month_start
+        description: First day of the month for the given date.
+
+      - name: month_end
+        description: Last day of the month for the given date.
+
+      - name: month_name
+        description: Full month name.
+
+      - name: month_short
+        description: Abbreviated month name.
+
+      - name: month_day_number
+        description: Day number within the month.
+
+      - name: day_name
+        description: Abbreviated weekday name.
+
+      - name: month_year
+        description: Month and year label used for reporting.
+
+      - name: is_weekday
+        description: True when the date falls on Monday through Friday.
+
+      - name: is_weekend
+        description: True when the date falls on Saturday or Sunday.
+
+      - name: is_holiday
+        description: True when the date is an approved holiday based on holiday policy.
+
+      - name: gw_holidays_names
+        description: Holiday name for approved holidays. Null for non-holidays or overridden dates.
+
+      - name: is_workday
+        description: True when the date is a weekday and not an approved holiday.
+
+      - name: is_internship_month
+        description: >
+          False for July and August. For other months, follows workday logic.
+
+  - name: monthly_available_hours
+    description: "{{ doc('monthly_available_hours_overview') }}"
+    columns:
+      - name: month_start
+        description: First day of the reporting month.
+        tests:
+          - not_null
+          - unique
+
+      - name: month_end
+        description: Last day of the reporting month.
+
+      - name: available_workdays
+        description: Number of weekdays in the month excluding approved holidays.
+
+      - name: available_work_hours
+        description: Available workdays multiplied by 4 hours per day.
