@@ -9,6 +9,6 @@ SELECT
     LAST_DAY(month_end, 'month')::DATE AS month_end,
     COUNT_IF(is_weekday AND NOT is_holiday) AS available_workdays,
     COUNT_IF(is_weekday AND NOT is_holiday) * 4 AS available_work_hours
-FROM {{ ref('date_table') }}
+FROM {{ ref('date_table_gold') }}
 GROUP BY 1, 2
 ORDER BY month_start
